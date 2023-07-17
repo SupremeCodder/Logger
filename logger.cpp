@@ -43,7 +43,7 @@ void Logger::writeToFile()
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock, [this]{return !buffer.empty(); });
 
-        DataStructure data_fromBuff;    //структура, в которую данные засовываются из буффера
+        DataStructure data_fromBuff;
 
         data_fromBuff.id = buffer.begin()->id;
         data_fromBuff.length = buffer.begin()->length;
@@ -57,14 +57,13 @@ void Logger::writeToFile()
         {
             file << "Time: " << data_fromBuff.ltm->tm_hour << ":" << data_fromBuff.ltm->tm_min << ":" << data_fromBuff.ltm->tm_sec
                                                            << ":" << data_fromBuff.ms.count() << ":" << data_fromBuff.us.count()
-                 << " | ID: " << static_cast<int>(data_fromBuff.id)
-                 << " | Length: " << static_cast<int>(data_fromBuff.length) <<  std::endl;
+                 << "  ID: " << static_cast<int>(data_fromBuff.id)
+                 << "  Length: " << static_cast<int>(data_fromBuff.length) <<  std::endl;
 
             for (int i = 0; i < data_fromBuff.length; i++)
             {
                 file << "Data[" << i << "]: " << static_cast<int>(*(data_fromBuff.pointer + i)) << std::endl;
             }
-            file << "----------------------------------" << std::endl;
         }
     }
 

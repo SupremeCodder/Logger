@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             counter++;
             logger->writeToBuffer(array,1,5);
-            printf("%u\n", counter.load());
+//            printf("%u\n", counter.load());
 //            std::cout << counter << std::endl;
             std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             counter++;
             logger->writeToBuffer(array,2,5);
-            printf("%u\n", counter.load());
+//            printf("%u\n", counter.load());
 //            std::cout << counter << std::endl;
             std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             counter++;
             logger->writeToBuffer(array,3,5);
-            printf("%u\n", counter.load());
+//            printf("%u\n", counter.load());
 //            std::cout << counter << std::endl;
             std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
         {
             counter++;
             logger->writeToBuffer(array,4,5);
-            printf("%u\n", counter.load());
+//            printf("%u\n", counter.load());
 //            std::cout << counter << std::endl;
             std::this_thread::sleep_for(std::chrono::microseconds(10));
         }
@@ -81,7 +81,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
     {
         counter++;
         logger->writeToBuffer(array,5,5);
-        printf("%u\n", counter.load());
+//        printf("%u\n", counter.load());
 //        std::cout << counter << std::endl;
         std::this_thread::sleep_for(std::chrono::microseconds(10));
     }
